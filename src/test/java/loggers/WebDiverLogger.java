@@ -1,6 +1,6 @@
 package loggers;
 
-import helpers.JavaScriptHelper;
+import web.helpers.JavaScriptHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
@@ -29,18 +29,18 @@ public class WebDiverLogger implements WebDriverListener {
         this.driver = driver;
     }
 
-    @Override
+    /*@Override
     public void afterFindElement(WebDriver driver, By locator, WebElement result){
         logger.info("Найден элемент");
-        getScreenshotFull(driver,outputDir,"");
+        getScreenshotFull(outputDir,"");
         JavaScriptHelper.scrollToTop();
     }
     @Override
     public void afterFindElements(WebDriver driver, By locator, List result){
         logger.info("Найдены элементы");
-        getScreenshotFull(driver,outputDir,"");
+        getScreenshotFull(outputDir,"");
         JavaScriptHelper.scrollToTop();
-    }
+    }*/
     @Override
     public void afterGetText(WebElement element, String result){
         logger.info("Получен текст: " + result);
@@ -58,7 +58,7 @@ public class WebDiverLogger implements WebDriverListener {
         logger.info("Клик по элементу " + element);
     }
 
-    public void getScreenshotFull(WebDriver driver, String filePath, String fileName){
+    public void getScreenshotFull(String filePath, String fileName){
         try {
             if(new File(filePath).mkdirs()){
                 logger.info("Создана директория " + filePath);
@@ -77,7 +77,7 @@ public class WebDiverLogger implements WebDriverListener {
             e.printStackTrace();
         }
     }
-    public void getScreenshot(WebDriver driver, String filePath, String fileName){
+    public void getScreenshot(String filePath, String fileName){
         try {
             if(new File(filePath).mkdirs()){
                 logger.info("Создана директория " + filePath);
